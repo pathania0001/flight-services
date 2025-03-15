@@ -43,8 +43,22 @@ const getAirplaneById = async (id)=> {
     }
 }
 
+const destroyAirplane = async (id)=> {
+    try {
+        const response = await airplaneRepository.destroy(id);
+        return response;
+    } catch (error) {
+        if(error.statusCode === StatusCodes.NOT_FOUND)
+        {
+            throw new AppError ("Airplane not found",error.statusCode);
+        }
+        throw new AppError("Cannot fetch data of all airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 export {
     createAirplane,
     getAllAirplanes,
     getAirplaneById,
+    destroyAirplane
 }

@@ -15,9 +15,12 @@ import { StatusCodes } from "http-status-codes";
     async destroy(data){
             const response = await this.model.destroy({
                 where : {
-                    id : data.id
+                    id : data
                 }
             });
+            if(!response){
+                throw new AppError("Requested item not found",StatusCodes.NOT_FOUND);
+            }
             return response
     }
 

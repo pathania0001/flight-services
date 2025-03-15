@@ -35,7 +35,7 @@ import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
        Get all airplanes
     */
 
-const getAllAirplanes = async () =>{
+const getAllAirplanes = async (req,res) =>{
      try {
        
       const airplanes = await Service.Airplane.getAllAirplanes();
@@ -72,9 +72,25 @@ const getAirplaneById = async (req , res) =>{
      }
 }
 
+const destroyAirplane = async (req,res) =>{
+  try {
+      const response = await Service.Airplane.destroyAirplane(req.params.id);
+      SuccessResponse.data = response;
+      return res
+                .status(StatusCodes.OK)
+                .json(SuccessResponse)
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res
+              .status(error.statusCode)
+              .json(ErrorResponse);
+  }
+}
+
 export {
     registerAirplane,
     getAllAirplanes,
-    getAirplaneById
+    getAirplaneById,
+    destroyAirplane,
 }
 
