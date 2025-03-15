@@ -2,7 +2,11 @@ import { StatusCodes } from "http-status-codes"
 import { Service } from "../services/index.js"
 import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
 
-  export const registerAirplane = async (req , res) =>{
+    /* 
+       POST /api/v1/airplane/register
+       Register a new airplane
+    */
+   const registerAirplane = async (req , res) =>{
     console.log("inside-airplane-controller")
     try {
         const airplane = await Service.Airplane.createAirplane({
@@ -24,5 +28,53 @@ import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
                    .json(ErrorResponse)
          
     }
+}
+
+    /*
+       GET /api/v1/airplane
+       Get all airplanes
+    */
+
+const getAllAirplanes = async () =>{
+     try {
+       
+      const airplanes = await Service.Airplane.getAllAirplanes();
+      SuccessResponse.data = airplanes;
+      return res 
+                .status(StatusCodes.OK)
+                .json(SuccessResponse)
+     } catch (error) {
+        ErrorResponse.error = error;
+        return res
+                  .status(error.statusCode)
+                  .json(ErrorResponse);
+     }
+}
+    /*
+       GET /api/v1/airplane/:id
+       Get Airplane by id
+    */
+
+const getAirplaneById = async (req , res) =>{
+     try {
+       
+      const airplane = await Service.Airplane.getAirplaneById(req.params.id);
+      SuccessResponse.data = airplane;
+      console.log(SuccessResponse.data)
+      return res 
+                .status(StatusCodes.OK)
+                .json(SuccessResponse)
+     } catch (error) {
+        ErrorResponse.error = error;
+        return res
+                  .status(error.statusCode)
+                  .json(ErrorResponse);
+     }
+}
+
+export {
+    registerAirplane,
+    getAllAirplanes,
+    getAirplaneById
 }
 

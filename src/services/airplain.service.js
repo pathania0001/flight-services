@@ -3,7 +3,7 @@ import { AirplaneRepository } from "../repositories/index.js"
 import {AppError} from "../utils/errors/index.js";
 
 const airplaneRepository = new AirplaneRepository();
-export const createAirplane = async (data) =>{
+ const createAirplane = async (data) =>{
     console.log("inside-airplane-services")
     try {
         const airplane = await airplaneRepository.create(data);
@@ -22,3 +22,29 @@ export const createAirplane = async (data) =>{
     }
 }
 
+const getAllAirplanes = async ()=> {
+    try {
+        const airplanes = await airplaneRepository.getAll();
+        return airplanes;
+    } catch (error) {
+        throw new AppError("Cannot fetch data of all airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+const getAirplaneById = async (id)=> {
+    try {
+        const airplanes = await airplaneRepository.get(id);
+        return airplanes;
+    } catch (error) {
+        if(error.statusCode === StatusCodes.NOT_FOUND)
+        {
+            throw new AppError ("Airplane not found",error.statusCode);
+        }
+        throw new AppError("Cannot fetch data from all airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+export {
+    createAirplane,
+    getAllAirplanes,
+    getAirplaneById,
+}

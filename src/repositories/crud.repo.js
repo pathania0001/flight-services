@@ -1,5 +1,7 @@
     import { where } from "sequelize";
     import { customlogger } from "../config/index.js";
+import AppError from "../utils/errors/ApiError.js";
+import { StatusCodes } from "http-status-codes";
 
     class CrudRepositories {
         constructor(model) {
@@ -21,6 +23,9 @@
 
     async get(data){
             const response = await this.model.findByPk(data);
+            if(!response){
+                throw new AppError("Requested item not found",StatusCodes.NOT_FOUND);
+            }
             return response
     }
 
