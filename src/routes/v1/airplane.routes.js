@@ -12,6 +12,8 @@ airplaneRoutes.route("/").get(Controller.Airplane.getAllAirplanes);
 airplaneRoutes.route("/:id").get(Controller.Airplane.getAirplaneById);
 
 airplaneRoutes.route("/:id").delete(Controller.Airplane.destroyAirplane);
+
+airplaneRoutes.route("/:id").patch( AirplaneMiddleware.validateAirplaneUpdateRequest,Controller.Airplane.updateAirplane);
 export {
     airplaneRoutes,
 }

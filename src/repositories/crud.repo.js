@@ -29,6 +29,7 @@ import { StatusCodes } from "http-status-codes";
             if(!response){
                 throw new AppError("Requested item not found",StatusCodes.NOT_FOUND);
             }
+            
             return response
     }
 
@@ -38,12 +39,16 @@ import { StatusCodes } from "http-status-codes";
     }
 
     async update(id,data){
+        const res = await this.model.findByPk(id);
+            if(!res){
+                throw new AppError("Requested item not found",StatusCodes.NOT_FOUND);
+            }
             const response = await this.model.update(data,{
                 where : {
                     id : id
                 }
             });
-            return response  
+            return response 
     }
     }
 

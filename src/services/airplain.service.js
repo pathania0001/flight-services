@@ -55,10 +55,25 @@ const destroyAirplane = async (id)=> {
         throw new AppError("Cannot fetch data of all airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
+const updateAirplane = async(id ,data) =>{
+
+    try {
+         const response  = await airplaneRepository.update(id,data);
+         console.log(response);
+         return response;
+    } catch (error) {
+        if(error.statusCode === StatusCodes.NOT_FOUND)
+            {
+                throw new AppError ("Airplane not found",error.statusCode);
+            }
+        throw new AppError("Cannot fetch data of all airplanes",StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 
 export {
     createAirplane,
     getAllAirplanes,
     getAirplaneById,
-    destroyAirplane
+    destroyAirplane,
+    updateAirplane
 }

@@ -87,10 +87,28 @@ const destroyAirplane = async (req,res) =>{
   }
 }
 
+const updateAirplane = async (req,res) =>{
+    console.log("inside-airplane-controller")
+       try {
+          const airplane = await Service.Airplane.updateAirplane(req.params.id,req.body);
+          SuccessResponse.data = airplane;
+          return res 
+                      .status(StatusCodes.OK)
+                      .json(SuccessResponse);
+       } catch (error) {
+          ErrorResponse.error = error;
+          return res 
+                    .status(error.statusCode)
+                    .json(ErrorResponse);
+
+       }
+
+}
 export {
     registerAirplane,
     getAllAirplanes,
     getAirplaneById,
     destroyAirplane,
+    updateAirplane
 }
 
