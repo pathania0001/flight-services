@@ -1,7 +1,6 @@
-    import { where } from "sequelize";
-    import { customlogger } from "../config/index.js";
-import AppError from "../utils/errors/ApiError.js";
-import { StatusCodes } from "http-status-codes";
+const { StatusCodes } = require("http-status-codes");
+const { AppError } = require("../utils");
+
 
     class CrudRepositories {
         constructor(model) {
@@ -52,4 +51,4 @@ import { StatusCodes } from "http-status-codes";
     }
     }
 
-    export default CrudRepositories;
+    module.exports = CrudRepositories;

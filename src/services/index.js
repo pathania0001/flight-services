@@ -1,7 +1,7 @@
-import * as AirplaneService from "./airplain.service.js"
+
+const AirplaneService = require('./airplain.service.js')
 
 
-export const Service = {
-    Airplane : AirplaneService
+module.exports = {
+    Airplane:AirplaneService,
 }
-

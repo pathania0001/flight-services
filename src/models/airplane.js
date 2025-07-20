@@ -1,6 +1,6 @@
-import { Model, DataTypes } from "sequelize";
 
-export default (sequelize) => {
+const {Model,DataTypes} = require('sequelize');
+const airplaneModel = (sequelize) => {
   class Airplane extends Model {
     static associate(models) {
       // define associations here
@@ -12,8 +12,19 @@ export default (sequelize) => {
       modelNumber: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate:{
+          isAlphanumeric:true,
+        },
+        unique: true,
       },
-      capacity: DataTypes.INTEGER,
+      capacity:{
+       type: DataTypes.INTEGER,
+       defaultValue:0,
+       validate:{
+        max:1000,
+       }
+        
+      } 
     },
     {
       sequelize,
@@ -25,3 +36,5 @@ export default (sequelize) => {
 
   return Airplane;
 };
+
+module.exports = airplaneModel;

@@ -1,2 +1,7 @@
-export * from "./server.config.js"
-export *  from "./logger.config.js"
+const serverConfig = require('./server.config.js')
+const loggerConfig =  require('./logger.config.js')
+
+module.exports ={
+    ...serverConfig,
+    loggerConfig,
+}

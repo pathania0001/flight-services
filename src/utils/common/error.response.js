@@ -5,4 +5,4 @@ const error = {
     error:{}
 }
 
-export default error
+module.exports = error

@@ -1,8 +1,5 @@
-
-import { StatusCodes } from "http-status-codes";
-import { ErrorResponse } from "../utils/common/index.js";
-import AppError from "../utils/errors/ApiError.js";
-
+const { StatusCodes } = require("http-status-codes");
+const {ErrorResponse} = require('../utils');
  const validateAirplaneCreateRequest = (req,res,next)=>{
     try {
         const modelNumber = req.body.modelNumber;
@@ -42,7 +39,7 @@ const validateAirplaneUpdateRequest = (req,res,next)=>{
 
 
 
-export {
+module.exports = {
     validateAirplaneCreateRequest,
     validateAirplaneUpdateRequest
 }

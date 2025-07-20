@@ -1,6 +1,7 @@
 
-import * as AirplaneController from "./airplane.controller.js"
+const  AirplaneController = require('./airplane.controller')
 
-export const Controller = {
-    Airplane : AirplaneController,
+
+module.exports={
+   Airplane:AirplaneController,
 }

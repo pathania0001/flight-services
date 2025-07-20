@@ -1,3 +1,5 @@
+const AirplaneRepository = require('./airplane.repo.js');
 
-
-export * from "./airplane.repo.js";
+module.exports = {
+  AirplaneRepository,
+};

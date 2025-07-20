@@ -1,13 +1,10 @@
 
-import express from "express"
-import { airplaneRoutes } from "./airplane.routes.js";
+const express  = require('express');
 
-//import userRouter from './user.routes.js';
+const airplaneRoutes = require('./airplane.routes');
 
-const v1Router = express.Router();
+const v1Routes = express.Router();
 
-v1Router.use("/airplane",airplaneRoutes);
+v1Routes.use('/airplane',airplaneRoutes);
 
-export default v1Router;
-
-
+module.exports = v1Routes;

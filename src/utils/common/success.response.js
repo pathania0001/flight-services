@@ -5,4 +5,4 @@ const success = {
     error:{}
 }
 
-export default success
+module.exports = success

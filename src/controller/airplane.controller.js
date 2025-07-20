@@ -1,7 +1,7 @@
-import { StatusCodes } from "http-status-codes"
-import { Service } from "../services/index.js"
-import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
 
+const Service = require('../services');
+const {StatusCodes} = require('http-status-codes');
+const {ErrorResponse,SuccessResponse} = require('../utils/common');
     /* 
        POST /api/v1/airplane/register
        Register a new airplane
@@ -21,7 +21,6 @@ import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
                    .json(SuccessResponse)
          
     } catch (error) {
-
       ErrorResponse.error = error;
          return res
                    .status(error.statusCode)
@@ -37,7 +36,7 @@ import { ErrorResponse, SuccessResponse } from "../utils/common/index.js"
 
 const getAllAirplanes = async (req,res) =>{
      try {
-       
+       console.log("inside-airplane-controller")
       const airplanes = await Service.Airplane.getAllAirplanes();
       SuccessResponse.data = airplanes;
       return res 
@@ -104,7 +103,7 @@ const updateAirplane = async (req,res) =>{
        }
 
 }
-export {
+module.exports = {
     registerAirplane,
     getAllAirplanes,
     getAirplaneById,

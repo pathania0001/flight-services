@@ -1,8 +1,5 @@
+const AirplaneMiddleware = require('./airplane.middleware.js');
 
-import * as AirplaneMiddleware from "./airplaine.middleware.js"
-
-
-export {
-    AirplaneMiddleware,
-}
-
+module.exports = {
+  AirplaneMiddleware,
+};

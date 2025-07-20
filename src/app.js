@@ -1,30 +1,36 @@
-import express from "express"
-import cors from "cors"
-import cookieParser from "cookie-parser";
-import { CORS_ORIGIN } from "./config/index.js";
-import router from "./routes/index.js";
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const { CORS_ORIGIN } = require("./config/index.js");
+const routes = require("./routes/index.js");
 
-const app=express();
-
-app.use(cors({
-    origin : CORS_ORIGIN,
-    credentials : true  
-}))
-
-app.use(express.json({limit:"16kb"}))
-app.use(express.urlencoded({extended:true, limit:"16kb"}))
-app.use(express.static("public"))
-
-app.use(cookieParser())
-
-//above is just backend setup
+const app = express();
 
 
-//now start api routing
+app.use(
+  cors({
+    origin: CORS_ORIGIN,
+    credentials: true,
+  })
+);
 
 
-app.use("/api",router)
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 
-export {app}
+
+app.use(express.static("public"));
 
 
+app.use(cookieParser());
+
+// Health check route (optional)
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Server is up!" });
+});
+
+
+app.use("/api", routes);
+
+
+module.exports = app ;

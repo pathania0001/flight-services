@@ -1,5 +1,4 @@
-import AppError from "./ApiError.js";
-
-export {
+const AppError = require('./AppError')
+module.exports={
     AppError,
 }

@@ -1,8 +1,7 @@
-import success from "./success.response.js";
-import error from "./error.response.js";
-const SuccessResponse = success;
-const ErrorResponse = error;
 
-export { SuccessResponse, ErrorResponse };
-
-
+const SuccessResponse = require('./success.response');
+const ErrorResponse = require('./error.response');
+module.exports = {
+    SuccessResponse,
+    ErrorResponse,
+}

@@ -1,5 +1,5 @@
-import { Airplane } from "../models/index.js";
-import CrudRepositories from "./crud.repo.js";
+const { Airplane } = require("../models");
+const CrudRepositories = require("./crud.repo");
 
 // console.log("inside-airplane-repo")
 class AirplaneRepository extends CrudRepositories{  
@@ -7,5 +7,4 @@ class AirplaneRepository extends CrudRepositories{
         super(Airplane)
     }
 }
-
-export  {AirplaneRepository};
+module.exports = AirplaneRepository
