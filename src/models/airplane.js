@@ -15,7 +15,6 @@ const airplaneModel = (sequelize) => {
         validate:{
           isAlphanumeric:true,
         },
-        unique: true,
       },
       capacity:{
        type: DataTypes.INTEGER,

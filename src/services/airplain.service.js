@@ -10,13 +10,14 @@ const createAirplane = async (data) => {
     const airplane = await airplaneRepository.create(data);
     return airplane;
   } catch (error) {
-    if (error.name === "SequelizeValidationError") {
+    if (error.name === "SequelizeValidationError" || error.name === "SequelizeUniqueConstraintError") {
       let explanation = [];
       error.errors.forEach((errorField) => {
         explanation.push(errorField.message);
       });
       throw new AppError(explanation, StatusCodes.BAD_REQUEST);
     }
+    
     throw new AppError(
       "Cannot Create new Airplane object",
       StatusCodes.INTERNAL_SERVER_ERROR

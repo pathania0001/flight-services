@@ -1,5 +1,6 @@
 const AirplaneMiddleware = require('./airplane.middleware.js');
-
+const CityMiddleware = require('./city-middleware.js')
 module.exports = {
-  AirplaneMiddleware,
+  Airplane:AirplaneMiddleware,
+  City:CityMiddleware,
 };

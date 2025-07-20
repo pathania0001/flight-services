@@ -1,7 +1,8 @@
 
-const AirplaneService = require('./airplain.service.js')
-
+const AirplaneServices = require('./airplain.service.js')
+const CityServices = require('./city.service.js')
 
 module.exports = {
-    Airplane:AirplaneService,
+    Airplane:AirplaneServices,
+    City:CityServices,
 }
