@@ -1,6 +1,9 @@
+'use strict';
+const {
+  Model
+} = require('sequelize');
 
-const {Model,DataTypes} = require('sequelize');
-const airplaneModel = (sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   class Airplane extends Model {
     static associate(models) {
       // define associations here
@@ -35,5 +38,3 @@ const airplaneModel = (sequelize) => {
 
   return Airplane;
 };
-
-module.exports = airplaneModel;

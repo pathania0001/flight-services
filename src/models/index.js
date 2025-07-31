@@ -40,7 +40,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 
-module.exports = {
-  ...db,
-  Airplane: db.Airplane, 
-};
+module.exports = db;
