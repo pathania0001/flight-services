@@ -1,11 +1,12 @@
 const { StatusCodes } = require("http-status-codes");
-const {ErrorResponse} = require('../utils');
+const {AppError} = require('../utils');
+const { ErrorResponse } = require("../utils/common");
  const validateAirportRequest = (req,res,next)=>{
         const {name,code,city_Id} = req.body;
         if(!name )
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["Airport name is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["Airport name is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)
@@ -13,7 +14,7 @@ const {ErrorResponse} = require('../utils');
         if(!code )
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["Airport code is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["Airport code is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)
@@ -21,7 +22,7 @@ const {ErrorResponse} = require('../utils');
         if(!city_Id )
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["City is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["City is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)
@@ -34,7 +35,7 @@ const {ErrorResponse} = require('../utils');
         if(name==="")
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["Airport name is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["Airport name is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)
@@ -42,7 +43,7 @@ const {ErrorResponse} = require('../utils');
         if(code==="")
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["Airport code is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["Airport code is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)
@@ -50,7 +51,7 @@ const {ErrorResponse} = require('../utils');
         if(city_Id==="")
         {
          ErrorResponse.message = "Something went wrong while creating Airport";
-         ErrorResponse.error =  new AppError(["City is not found in the onncoming request form"],StatusCodes.BAD_REQUEST)
+         ErrorResponse.error =  new AppError(["City is not found in the oncoming request form"],StatusCodes.BAD_REQUEST)
             return res 
                      .status(StatusCodes.BAD_REQUEST)
                      .json(ErrorResponse)

@@ -1,5 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
-const {ErrorResponse} = require('../utils');
+const { AppError } = require("../utils");
+const { ErrorResponse } = require("../utils/common");
+
  const validateAirplaneRequest = (req,res,next)=>{
     try {
         const modelNumber = req.body.modelNumber;
