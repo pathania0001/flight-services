@@ -28,6 +28,21 @@ const registerFlight = async(req,res)=>{
  
 }
 
+const getFlights = async(req,res)=>{
+
+    try {
+    const flights = await Service.Flight.getAllFlights(req.query); 
+
+    SuccessResponse.data = flights;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+}
+
 module.exports = {
     registerFlight,
+    getFlights,
 }
