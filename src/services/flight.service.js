@@ -100,7 +100,7 @@ const getAllFlights = async(query)=>{
   const allFlights = await flightRepository.getAllFlights(customFilter,sortFilters);
   return allFlights;
   } catch (error) {
-    //console.log(error)
+    console.log(error)
      if(error instanceof AppError)
       throw error;
     throw new AppError(["Something went wrong while fetching flights"],StatusCodes.INTERNAL_SERVER_ERROR)
