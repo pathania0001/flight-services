@@ -66,6 +66,18 @@ const validateFlightRequest = async(req,res,next)=>{
         next();
 }
 
+const validateUpdateSeatRequests = async(req,res,next) => {
+     const{ seats } = req.body;
+    
+        if(!seats){
+            ErrorResponse.message = "Something went wrong in while updating seats in flight";
+            ErrorResponse.error = new AppError(["Number of Seats that are going to change are not found in oncoming request"],StatusCodes.BAD_REQUEST)
+            return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
+        }
+        next();
+}
+
 module.exports = {
-    validateFlightRequest
+    validateFlightRequest,
+    validateUpdateSeatRequests
 };

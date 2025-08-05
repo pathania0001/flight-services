@@ -42,7 +42,39 @@ const getFlights = async(req,res)=>{
     }
 }
 
+const getFlightById = async(req,res)=>{
+
+    try {
+    
+    const flights = await Service.Flight.getFlightById(req.params.id); 
+    SuccessResponse.data = flights;
+    return res.status(StatusCodes.OK).json(SuccessResponse);
+
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+}
+
+const updateSeats = async(req,res)=>{
+
+    try {
+    const flight = await Service.Flight.updateSeats({
+        flightId : req.params.id,
+        seats : req.body.seats,
+        dec : parseInt(req.body.dec),
+    })
+    SuccessResponse.data = flight;
+    return res.status(StatusCodes.OK).json(SuccessResponse);       
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+}
 module.exports = {
     registerFlight,
     getFlights,
+    getFlightById,
+    updateSeats,
+
 }

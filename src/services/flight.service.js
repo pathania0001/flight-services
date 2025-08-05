@@ -107,7 +107,42 @@ const getAllFlights = async(query)=>{
   }
 
 }
+
+const getFlightById = async (id) => {
+  try {
+    const flight = await flightRepository.get(id);
+    return flight;
+  } catch (error) {
+    if (error.statusCode === StatusCodes.NOT_FOUND) {
+      throw new AppError("Flight not found", error.statusCode);
+    }
+    throw new AppError(
+      "Cannot fetch data from Flight",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+};
+
+
+const updateSeats = async (data)=>{
+  
+   try {
+         const flight = await flightRepository.updateRemainingSeats(data.flightId,data.seats,data.dec);
+       return flight;
+  } catch (error) {
+    console.log(error)
+    if (error.statusCode === StatusCodes.NOT_FOUND) {
+      throw new AppError("Flight not found", error.statusCode);
+    }
+    throw new AppError(
+      "Cannot fetch data from Flight",
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
 module.exports = {
     createFlight,
     getAllFlights,
+    getFlightById,
+    updateSeats,
 }
