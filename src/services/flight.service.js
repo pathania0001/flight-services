@@ -127,10 +127,15 @@ const getFlightById = async (id) => {
 const updateSeats = async (data)=>{
   
    try {
+    console.log(data)
          const flight = await flightRepository.updateRemainingSeats(data.flightId,data.seats,data.dec);
        return flight;
   } catch (error) {
     console.log(error)
+
+    if(error instanceof AppError)
+      throw error;
+
     if (error.statusCode === StatusCodes.NOT_FOUND) {
       throw new AppError("Flight not found", error.statusCode);
     }

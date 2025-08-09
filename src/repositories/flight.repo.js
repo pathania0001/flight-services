@@ -59,6 +59,9 @@ class FlightRepository extends CrudRepositories{
              if(!flight)
                 throw new AppError(["Flight not Found"],StatusCodes.BAD_REQUEST)
 
+              if(isNaN(dec))
+                throw new AppError(["Updation failing in flight seats due to BAD_REQUEST"],StatusCodes.BAD_REQUEST)
+
              if(dec){
                 await flight.decrement('totalSeats',{by:seats,transaction})
              }

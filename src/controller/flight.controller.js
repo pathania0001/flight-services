@@ -62,13 +62,14 @@ const updateSeats = async(req,res)=>{
     const flight = await Service.Flight.updateSeats({
         flightId : req.params.id,
         seats : req.body.seats,
-        dec : parseInt(req.body.dec),
+        dec : parseInt(req.body?.dec) || 1,
     })
     SuccessResponse.data = flight;
     return res.status(StatusCodes.OK).json(SuccessResponse);       
     } catch (error) {
+        console.log(error)
         ErrorResponse.error = error;
-        return res.status(error.statusCode).json(ErrorResponse);
+        return res.status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
     }
 }
 module.exports = {

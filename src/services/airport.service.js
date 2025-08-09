@@ -60,6 +60,8 @@ const destroyAirport = async (id) => {
     if (error.statusCode === StatusCodes.NOT_FOUND) {
       throw new AppError("Airport not found", error.statusCode);
     }
+    if(error instanceof AppError)
+      throw error;
     throw new AppError(
       "Cannot delete airport",
       StatusCodes.INTERNAL_SERVER_ERROR
