@@ -62,7 +62,7 @@ const updateSeats = async(req,res)=>{
     const flight = await Service.Flight.updateSeats({
         flightId : req.params.id,
         seats : req.body.seats,
-        dec : parseInt(req.body?.dec) || 1,
+        dec : parseInt(req.body?.dec),
     })
     SuccessResponse.data = flight;
     return res.status(StatusCodes.OK).json(SuccessResponse);       
