@@ -1,7 +1,7 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 const { ENUMS } = require('../utils/common');
-const {BUSINESS,PREMIUM_ECONOMIC,ECONOMIC,FIRST_CLASS} = ENUMS;
+const {BUSINESS,PREMIUM_ECONOMIC,ECONOMIC,FIRST_CLASS} = ENUMS.SEAT_TYPE;
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Seats', {

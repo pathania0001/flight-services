@@ -6,6 +6,12 @@ const SEAT_TYPE = {
     FIRST_CLASS:'first_class',
 }
 
+const USER_ROLE = {
+    USER:"user",
+    ADMIN:"admin"
+}
+
 module.exports = {
     SEAT_TYPE,
+    USER_ROLE
 }

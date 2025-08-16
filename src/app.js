@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const { CORS_ORIGIN } = require("./config/index.js");
+const { CORS_ORIGIN, COOKIE_SIGN } = require("./config/index.js");
 const routes = require("./routes/index.js");
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 
 
-app.use(cookieParser());
+app.use(cookieParser(COOKIE_SIGN));
 
 // Health check route (optional)
 app.get("/", (req, res) => {
