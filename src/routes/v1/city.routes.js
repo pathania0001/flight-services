@@ -5,9 +5,6 @@ const Middleware = require('../../middlewares');
 const Controller = require('../../controller');
 
 cityRoutes.route("/register").post( 
-    Middleware.Auth.isAuthenticated,
-    Middleware.Auth.isAdmin,
-    Middleware.City.validateCityRequest,
     Controller.City.registerCity);
 
 cityRoutes.route("/").get( 

@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const process = require("process");
-const configJson = require("../config/config.json");
+const configJson = require("../config/config");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";

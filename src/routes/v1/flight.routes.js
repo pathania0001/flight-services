@@ -17,7 +17,6 @@ flightRoutes.route('/:id').get(
 
 flightRoutes.route('/:id/seats').patch(
     Middleware.Auth.isAuthenticated,
-    Middleware.Auth.isAdmin,
     Middleware.Flight.validateUpdateSeatRequests,Controller.Flight.updateSeats);
 
 

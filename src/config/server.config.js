@@ -11,4 +11,6 @@ module.exports = {
   COOKIE_SIGN:process.env.COOKIE_SIGN,
   TOKEN_SECURITY_KEY:process.env.TOKEN_SECURITY_KEY,
   User_Services:process.env.User_Services,
+  ALLOWED_SERVICES:process.env.ALLOWED_SERVICES,
+  THIS_SERVICE:process.env.THIS_SERVICE,
 };
