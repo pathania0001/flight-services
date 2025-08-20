@@ -5,7 +5,7 @@ const { SuccessResponse, ErrorResponse } = require("../utils/common");
 const registerAirport = async(req,res)=>{
     try {
     const {name,code,address,city_Id}  = req.body;
-    const airport = Service.Airport.createAirport({name,code,address,city_Id});
+    const airport = await Service.Airport.createAirport({name,code,address,city_Id});
     SuccessResponse.data = airport;
     return res
               .status(StatusCodes.ACCEPTED)
